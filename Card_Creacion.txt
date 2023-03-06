@@ -1,0 +1,71 @@
+MySQL Shell 8.0.32
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \
+SyntaxError: Invalid or unexpected token
+ MySQL  JS > \connect
+\connect [--mx|--mysqlx|--mc|--mysql] [--ssh <sshuri>] <URI>
+ MySQL  JS > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching schema names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 30
+Server version: 8.0.32 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+Fetching global names for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| agencia            |
+| credit_cards       |
+| evaluacion_1       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  SQL > \use credit_cards
+Default schema set to `credit_cards`.
+Fetching global names, object names from `credit_cards` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  credit_cards  SQL > show tables;
++------------------------+
+| Tables_in_credit_cards |
++------------------------+
+| card                   |
+| customer               |
++------------------------+
+2 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  credit_cards  SQL > desc card;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| card_number  | int         | NO   | PRI | NULL    |       |
+| card_type    | varchar(50) | NO   |     | NULL    |       |
+| issuing_bank | varchar(50) | NO   |     | NULL    |       |
+| cvv          | smallint    | NO   |     | NULL    |       |
+| issue_date   | varchar(50) | NO   |     | NULL    |       |
+| expiry_date  | varchar(50) | NO   |     | NULL    |       |
+| pin          | smallint    | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+7 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  credit_cards  SQL > desc customer;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id_client    | int         | NO   | PRI | NULL    | auto_increment |
+| card_number  | int         | YES  | MUL | NULL    |                |
+| card_holder  | varchar(50) | NO   |     | NULL    |                |
+| billing_date | varchar(50) | NO   |     | NULL    |                |
+| credit_limit | int         | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  credit_cards  SQL >
