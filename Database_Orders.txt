@@ -1,0 +1,10 @@
+create table client(client_id int key auto_increment, name varchar(50) not null, segment enum('Consumer', 'Home Office','Corporate') not null, country varchar(50) not null, city varchar(50) not null, state varchar(50) not null, CP varchar(8) not null, region enum('South','West','Central','East','North') not null);
+
+create table orders(order_id varchar(16) key, order_date varchar(10) not null, ship_date varchar(10) not null, ship_mode enum('Second Class', 'Standard') not null, client_id int, foreign key(client_id) references orders(client_id));
+
+create table sales(sale_id int key auto_increment, order_id varchar(16) not null, product_id varchar(18) not null, sales dec(20,4) not null, quantity smallint not null, discount dec(4,4) not null, profit dec(20,4) not null, foreign key(order_id) references orders(order_id), foreign key(product_id) references product(product_id));
+
+create table product(product_id varchar(18) key, category enum('Furniture','Office Supplies','Technology') not null, sub_category enum('Bookcases','Chairs','Labels','Tables','Storage','Furnishings','Art','Phones','Binders','Appliances','Paper','Accessories','Envelopes','Fasteners','Supplies','Machines','Copiers') not null, product_name varchar(200));
+
+
+
